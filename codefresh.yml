@@ -10,7 +10,7 @@ steps:
    revision: "${{CF_BRANCH}}"
    stage: prepare
   init:
-   image: radut/terraform-ansible
+   image: alpine/terragrunt
    title: Initializing Terraform
    stage: apply
    commands:
