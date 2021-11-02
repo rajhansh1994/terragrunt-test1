@@ -10,10 +10,12 @@ steps:
    revision: "${{CF_BRANCH}}"
    stage: prepare
   plan:
-   image: alpine/terragrunt
-   title: Outputting Terraform plan
-   stage: apply
-   commands:
+    type: parallel
+    image: alpine/terragrunt
+    title: Outputting Terraform plan
+    stage: apply
+    commands:
+    - cd frontend-app
     - terragrunt plan
   approve apply:
     type: pending-approval
@@ -32,6 +34,7 @@ steps:
    title: Applying Terraform
    stage: apply
    commands:
+    - cd frontend-app
     - terragrunt apply -auto-approve
    when:
     branch:
