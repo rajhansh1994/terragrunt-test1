@@ -9,6 +9,12 @@ steps:
    repo: "${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}"
    revision: "${{CF_BRANCH}}"
    stage: prepare
+  init:
+   image: radut/terraform-ansible
+   title: Initializing Terraform
+   stage: apply
+   commands:
+    - terragrunt init
   plan:
     image: alpine/terragrunt
     title: Outputting Terraform plan
