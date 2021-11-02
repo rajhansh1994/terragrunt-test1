@@ -10,7 +10,7 @@ steps:
    revision: "${{CF_BRANCH}}"
    stage: prepare
   plan:
-   image: sketchingdev/terraform-terragrunt
+   image: alpine/terragrunt
    title: Outputting Terraform plan
    stage: apply
    commands:
@@ -28,7 +28,7 @@ steps:
       branch:
         only: [ main ]
   apply:
-   image: sketchingdev/terraform-terragrunt
+   image: alpine/terragrunt
    title: Applying Terraform
    stage: apply
    commands:
