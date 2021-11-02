@@ -15,14 +15,13 @@ steps:
    stage: apply
    commands:
     - terragrunt init
-    - terraform init
   plan:
     image: alpine/terragrunt
     title: Outputting Terraform plan
     stage: apply
     commands:
      - cd frontend-app
-     - terragrunt plan
+     - terragrunt init && terragrunt plan
   approve apply:
     type: pending-approval
     title: confirm apply
