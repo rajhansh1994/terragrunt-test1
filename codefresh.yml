@@ -15,6 +15,7 @@ steps:
    stage: apply
    commands:
     - terragrunt init
+    - terraform init
   plan:
     image: alpine/terragrunt
     title: Outputting Terraform plan
