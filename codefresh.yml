@@ -19,9 +19,8 @@ steps:
     image: alpine/terragrunt
     title: Outputting Terraform plan
     stage: apply
-    commands:
-     - cd frontend-app
-     - terragrunt init && terragrunt plan
+    commands: 
+     - terragrunt init && terragrunt run-all plan
   approve apply:
     type: pending-approval
     title: confirm apply
@@ -39,8 +38,7 @@ steps:
    title: Applying Terraform
    stage: apply
    commands:
-    - cd frontend-app
-    - terragrunt apply -auto-approve
+    - terragrunt run-all apply -auto-approve
    when:
     branch:
      only:
