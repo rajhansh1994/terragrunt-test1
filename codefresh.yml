@@ -21,8 +21,7 @@ steps:
     title: Outputting Terraform plan
     stage: apply
     commands: 
-     - terragrunt init
-     - terragrunt run-all plan
+     - terragrunt init && terragrunt run-all plan
   approve apply:
     type: pending-approval
     title: confirm apply
