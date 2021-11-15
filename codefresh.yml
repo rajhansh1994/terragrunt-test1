@@ -21,7 +21,8 @@ steps:
     title: Outputting Terraform plan
     stage: apply
     commands: 
-     - terragrunt init && terragrunt run-all plan
+     - terragrunt init
+     - terragrunt run-all plan
   approve apply:
     type: pending-approval
     title: confirm apply
@@ -46,7 +47,7 @@ steps:
       - main
   destroy:
    image: alpine/terragrunt
-   title: Applying Terraform
+   title: Destroying Terraform
    stage: destroy
    commands:
     - terragrunt destroy-all --terragrunt-non-interactive
