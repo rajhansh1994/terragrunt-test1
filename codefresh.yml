@@ -38,7 +38,7 @@ steps:
    title: Applying Terraform
    stage: apply
    commands:
-    - terragrunt run-all apply -auto-approve
+    - terragrunt apply-all --terragrunt-non-interactive
    when:
     branch:
      only:
