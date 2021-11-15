@@ -2,6 +2,7 @@ version: '1.0'
 stages:
 - prepare
 - apply
+- destroy
 steps:
   main_clone:
    title: Cloning repository
@@ -39,6 +40,16 @@ steps:
    stage: apply
    commands:
     - terragrunt apply-all --terragrunt-non-interactive
+   when:
+    branch:
+     only:
+      - main
+  destroy:
+   image: alpine/terragrunt
+   title: Applying Terraform
+   stage: destroy
+   commands:
+    - terragrunt destroy-all --terragrunt-non-interactive
    when:
     branch:
      only:
