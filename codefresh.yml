@@ -10,18 +10,13 @@ steps:
    repo: "${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}"
    revision: "${{CF_BRANCH}}"
    stage: prepare
-  init:
-   image: alpine/terragrunt
-   title: Initializing Terraform
-   stage: apply
-   commands:
-    - terragrunt init
   plan:
     image: alpine/terragrunt
     title: Outputting Terraform plan
     stage: apply
     commands: 
-     - terragrunt init && terragrunt run-all plan
+     - terragrunt init
+     - terragrunt run-all plan
   approve apply:
     type: pending-approval
     title: confirm apply
